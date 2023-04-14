@@ -36,7 +36,7 @@ session_start();
           .click(function(e){
 
               // 기본이동 막기
-              e.preventDefault();
+              // e.preventDefault();
 
               // 비동기통신으로 로그아웃 처리 페이지호출!
               // Ajax - $.post() 로 처리!
@@ -82,10 +82,19 @@ session_start();
         if (auth === "A" || auth === "S") {
             $(".sns")
                 .append(`
-                  <a href="#" class="fi fi-user-secret" title="관리자" style="color:red">
+                  <a href="" class="fi fi-user-secret" title="관리자" style="color:red">
                       <span class="ir">관리자</span>
                   </a>
                 `);
+
+            // 관리자 페이지 링크설정
+            $(".sns a").last()
+            .click(function(){
+              event.preventDefault();
+              window.location.href = "./admin/";
+              //alert(55);
+            });
+            
         } /////////// if /////////////////
 
 
@@ -109,7 +118,8 @@ session_start();
           fontSize: "13px",
           fontWeight: "nomal",
           textAlign: "center",
-          whiteSpace: "nowrap"
+          whiteSpace: "nowrap",
+          zIndex: "-1"
       }); ////// css //////////
 
 

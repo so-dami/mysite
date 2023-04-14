@@ -472,7 +472,7 @@
 
 
 
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/jquery-3.6.1.min.js"></script>
     <script>
         /*//////////////////////////////////////////////
             함수명: logout
@@ -499,7 +499,7 @@
                     if (res === "ok") {
 
                         // 메시지
-                        alert("안전하게 로그아웃 되었습니다!");
+                        alert("안전하게 로그아웃되었습니다.");
 
                         // 첫페이지로 리로드
                         location.replace("../index.php");
@@ -508,7 +508,7 @@
                     else {
 
                         // 메시지
-                        alert("로그아웃시 문제가 발생하였습니다!" + res);
+                        alert("로그아웃 시 문제가 발생하였습니다." + res);
 
                     } ///// else ///////////////
 
