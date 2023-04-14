@@ -49,7 +49,7 @@
                             <!-- 아이디 -->
                             <li>
                                 <label for="mid" class="itit">아이디</label>
-                                <input type="text" name="mid" id="mid" maxlength="20" placeholder="영문자로 시작하는 6~20글자 영문자/숫자" />
+                                <input type="text" name="mid" id="mid" maxlength="20" placeholder="영문자로 시작하는 6~20글자" />
                                 <span class="msg"></span>
                             </li>
                             <!-- 비밀번호 -->

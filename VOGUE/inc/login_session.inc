@@ -27,11 +27,16 @@ session_start();
           $("#loginMsg").text(msg);
 
           // 2. 로그인 버튼을 로그아웃 버튼으로 변경하기
-          // 대상: .smsub li:eq(1) a
-          $(".smsub li").eq(1).find("a").text("로그아웃")
+          // 대상: .sns a:eq(4) span
+          $(".sns a").eq(4).find("span").text("로그아웃")
+          // 툴팁 변경 -> .parent() a 요소로 다시 올라감
+          .parent().attr("title","로그아웃")
 
-          // 3. 로그아웃 클릭시 로그아웃하기
-          .click(function(){
+          // 3. a요소의 로그아웃 클릭시 로그아웃하기
+          .click(function(e){
+
+              // 기본이동 막기
+              e.preventDefault();
 
               // 비동기통신으로 로그아웃 처리 페이지호출!
               // Ajax - $.post() 로 처리!
@@ -49,7 +54,7 @@ session_start();
                       if(res==="ok"){
 
                           // 메시지
-                          alert("안전하게 로그아웃 되었습니다!");
+                          alert("안전하게 로그아웃되었습니다.");
 
                           // 첫페이지로 리로드
                           location.replace("index.php");
@@ -58,13 +63,10 @@ session_start();
                       else{
 
                           // 메시지
-                          alert("로그아웃시 문제가 발생하였습니다!"+res);
+                          alert("로그아웃 시 문제가 발생하였습니다."+res);
 
                       } ///// else ///////////////
-
-
                   } /// 콜백함수 ///////
-
               );///////// Ajax - post /////////
 
 
@@ -72,15 +74,18 @@ session_start();
           });///// click /////////////////////
 
           // 4. 회원가입 버튼 제거하기
-          // 대상: .smsub li:last-child
-          $(".smsub li").last().remove();
+          // 대상: .sns a:eq(5)
+          $(".sns a").eq(5).remove();
           
         // 5. auth 권한 값이 "A"일 경우 
         //    "관리자" 메뉴 생성하여 추가하기
         if (auth === "A" || auth === "S") {
-            $(".smsub")
-                .append(
-                    "<li><a href='admin/index.php'>관리자</a></li>");
+            $(".sns")
+                .append(`
+                  <a href="#" class="fi fi-user-secret" title="관리자" style="color:red">
+                      <span class="ir">관리자</span>
+                  </a>
+                `);
         } /////////// if /////////////////
 
 
@@ -120,7 +125,7 @@ session_start();
 if(isset($_SESSION["mid"])){
 
     // 메시지
-    $msg = $_SESSION["name"]."님, 환영합니다!";
+    $msg = $_SESSION["name"]."님, VOGUE에 오신 것을 환영합니다.";
 
     // 권한
     $auth = $_SESSION["auth"];
