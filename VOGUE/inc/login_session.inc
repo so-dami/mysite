@@ -106,8 +106,8 @@ session_start();
           top: "5%",
           left: "50%",
           transform: "translateX(-50%)",
-          fontSize: "14px",
-          fontWeight: "bold",
+          fontSize: "13px",
+          fontWeight: "nomal",
           textAlign: "center",
           whiteSpace: "nowrap"
       }); ////// css //////////
